@@ -23,6 +23,7 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  justify-self: center;
 }
 
 .sectionTitle {
@@ -167,17 +168,19 @@
     grid-template-columns: repeat(2, 1fr);
   }
   .serviceCard {
-      height: 300px; /* Slightly taller for 2-card layout */
+      height: 180px; /* Slightly taller for 2-card layout */
   }
 }
 
 @media (max-width: 600px) {
   .servicesGrid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   
   }
   .serviceCard {
-    height: 250px; /* Adjust height for single column mobile view */
+    height: 150px; /* Adjust height for single column mobile view */
     padding: 15px;
+    text-align: center;
   }
 }
