@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './AIAgentSection.module.css';
+import styles from './AiAgentSection.module.css';
 
 // Lucide Icons
 import { Braces, Plane, Briefcase, Hospital, Car ,Truck , MessageSquare ,Brain ,User} from 'lucide-react';
