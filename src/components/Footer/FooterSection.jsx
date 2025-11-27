@@ -1,8 +1,11 @@
 import React from 'react';
 import styles from './FooterSection.module.css';
 import { Mail, MapPin, Phone, Linkedin, Twitter, Facebook } from 'lucide-react';
-
+import FAQModal from '../FAQModal/FAQModal';
+import { useState } from 'react';
 const Footer = () => {
+ 
+
     // You can replace 'Startup Name' with your actual logo component
     const CompanyName = "EMPROSYS"; 
 
@@ -42,7 +45,7 @@ const Footer = () => {
                         <a href="/contact" className={styles.footerLink}>Contact</a>
                         <a href="/privacy" className={styles.footerLink}>Privacy Policy</a>
                         <a href="/terms" className={styles.footerLink}>Terms of Service</a>
-                        <a href="/faq" className={styles.footerLink}>FAQ</a>
+                        <a href="" className={styles.footerLink} >FAQ</a>
                     </div>
                     
                     {/* Column 3: Contact Info & Socials */}
@@ -82,6 +85,7 @@ const Footer = () => {
                     </p>
                 </div>
             </div>
+            {/* <FAQModal isOpen={isModalOpen} onClose={() =>  setIsModalOpen(false)}  /> */}
         </footer>
     );
 };

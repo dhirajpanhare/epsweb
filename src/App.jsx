@@ -9,6 +9,7 @@ import AIAgentSection from './components/AiAgent/AiAgentSection'
 import ContactSection from './components/Contact/ContactSection'
 import { Contact } from 'lucide-react'
 import Footer from './components/Footer/FooterSection'
+import FAQModal from './components/FAQModal/FAQModal'
 
 const App = () => {
   useEffect(() => {
@@ -25,8 +26,10 @@ const App = () => {
       <ServicesSection/>
       <AIAgentSection/>
       <AboutSection/>  
-      <ContactSection/> 
+      <ContactSection/>
+        <FAQModal/> 
       <Footer/>
+    
     </div>
   )
 }

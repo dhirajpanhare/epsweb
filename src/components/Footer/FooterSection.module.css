@@ -10,7 +10,9 @@
     padding: 10px 20px 10px;
     /* Use the dark color for the footer background for contrast */
     background-color: var(--text-dark); 
+    color: #ffffff;
     color: var(--white);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border-top: 5px solid var(--accent-blue); /* Subtle accent line */
 }
 
@@ -67,7 +69,7 @@
 }
 
 .footerLink {
-    color: var(--text-medium);
+    color: var(--white);
     text-decoration: none;
     font-size: 0.95rem;
     line-height: 2; /* Spacing for readability */
@@ -83,13 +85,14 @@
 .contactItem {
     display: flex;
     align-items: center;
-    color: var(--text-medium);
+    /* color: var(--text-medium); */
+    color: var(--white);
     font-size: 0.95rem;
     margin-bottom: 15px;
 }
 
 .contactIcon {
-    color: var(--accent-blue);
+    color: var(--white);
     margin-right: 10px;
     flex-shrink: 0;
 }
@@ -103,7 +106,7 @@
 }
 
 .socialLink {
-    color: var(--text-medium);
+    color: var(--white);
     transition: color 0.3s;
     display: flex;
     align-items: center;
@@ -123,7 +126,7 @@
 
 .copyrightBar p {
     font-size: 0.85rem;
-    color: var(--text-medium);
+    color: var(--white);
 }
 
 /* --- Responsive Adjustments --- */

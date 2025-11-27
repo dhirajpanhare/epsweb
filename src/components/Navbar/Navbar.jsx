@@ -24,7 +24,7 @@ const Navbar = () => {
         {/* Left Side: Company Logo/Name */}
         <div className={styles.logo}>
           <a href="/">
-           <img src="/logo.png" alt="" />
+           <img src="/logo.webp" alt="EnProSys" loading='lazy'/>
           </a>
         </div>
 

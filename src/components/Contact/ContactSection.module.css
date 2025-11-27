@@ -11,6 +11,7 @@
 .contactSection {
   padding: 80px 20px;
   background-color: var(--bg-light);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .container {

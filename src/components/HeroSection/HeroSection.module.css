@@ -41,7 +41,7 @@
   justify-content: flex-start; 
   min-height: 85vh; 
   padding: 10px 20px 0; 
-  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(180deg, var(--light-lavender) 0%, var(--white) 80%); 
   color: var(--text-medium);
   text-align: center;
@@ -300,13 +300,13 @@
     opacity: 0.08; /* Even more subtle */
   }
   .hero::before { top: -20px; left: -30px; }
-  .hero::after { bottom: -40px; right: -50px; }
+  .hero::after { bottom: -40px; right: -50px; text-align: justify; }
   .container::before { top: 10%; left: -80px; }
   .container::after { bottom: 5%; right: -100px; }
 }
 
 @media (max-width: 480px) {
-  .headline { font-size: 2rem; line-height: 1.2; }
+  .headline { font-size: 2rem; line-height: 1.2; text-align:center }
   .ctaGroup { flex-direction: column; gap: 10px; }
   .primaryCta, .secondaryCta { width: 100%; max-width: 300px; margin: 0 auto; }
 }

@@ -18,6 +18,7 @@
 .servicesSection {
   padding: 80px 20px;
   background-color: var(--bg-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .container {
@@ -113,10 +114,10 @@
 }
 
 /* --- Hover Effect on Icon --- */
-.serviceCard:hover .iconCircle {
+/* .serviceCard:hover .iconCircle { */
     /* Subtle change to the background circle on hover */
     /* opacity: 0.2 !important; */
-}
+/* } */
 
 
 .cardContent {
@@ -175,8 +176,7 @@
 @media (max-width: 600px) {
   .servicesGrid {
    display: grid;
-   grid-template-columns: repeat(2, 1fr);
-   
+   grid-template-columns: repeat(2, 1fr);  
   }
   .serviceCard {
     height: 150px; /* Adjust height for single column mobile view */

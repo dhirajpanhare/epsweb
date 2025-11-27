@@ -14,7 +14,7 @@ const servicesData = [
   { 
     title: 'Web Development', 
     icon: Monitor,
-    color: 'var(--yellow)'  
+    color: 'var(--yellow)'
   },
   { 
     title: 'Mobile Applications', 
