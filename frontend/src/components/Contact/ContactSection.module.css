@@ -1,0 +1,217 @@
+/* --- Global Colors --- */
+:root {
+  --text-dark: #1a2a4b;
+  --text-medium: #555555;
+  --bg-light: #f7f9fc;
+  --white: #ffffff;
+  --accent-blue: #8CA9FF; 
+  --shadow-subtle: rgba(0, 0, 0, 0.08);
+}
+
+.contactSection {
+  padding: 80px 20px;
+  background-color: var(--bg-light);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.sectionSubtitle {
+  font-size: 1.1rem;
+  color: var(--text-medium);
+  font-weight: 400;
+}
+
+/* --- Layout Grid --- */
+.contactLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px var(--shadow-subtle);
+  overflow: hidden;
+}
+
+/* --- LEFT: Form Container --- */
+.formContainer {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formHeader {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+}
+
+.contactForm {
+    display: grid;
+    gap: 20px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.input, .textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.input:focus, .textarea:focus {
+    border-color: var(--accent-blue);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(140, 169, 255, 0.2);
+}
+
+.textarea {
+    resize: none;
+    /* height: 40px; */
+}
+
+.submitButton {
+    background-color: var(--accent-blue);
+    color: var(--white);
+    border: none;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.submitButton:hover {
+    background-color: #6c92ff;
+    transform: translateY(-1px);
+}
+
+/* --- RIGHT: Map and Details Container --- */
+.mapContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container for the GoogleMapEmbed component */
+.googleMapEmbedContainer {
+    height: 300px; 
+    position: relative;
+    border-radius: 12px; 
+    overflow: hidden;
+    flex-grow: 1; 
+}
+
+.googleMapEmbedContainer iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Overlay for the map pin text */
+.mapPinOverlay {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 8px 12px; 
+    background-color: var(--white);
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none; /* Allows map interaction beneath the pin */
+}
+
+.mapPinIcon {
+    width: 20px; 
+    height: 20px;
+    color: #ef4444; 
+}
+
+.mapPinText {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+
+.contactDetails {
+    padding: 30px 40px;
+    background-color: var(--text-dark);
+    color: var(--white);
+}
+
+.detailsHeader {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--accent-blue);
+}
+
+.detailItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.detailIcon {
+    color: var(--accent-blue);
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .contactLayout {
+        grid-template-columns: 1fr;
+    }
+    .formContainer {
+        padding: 30px;
+    }
+    .contactDetails {
+        padding: 30px;
+    }
+    .googleMapEmbedContainer {
+        height: 250px;
+    }
+}
+@media (min-width: 993px) {
+    .googleMapEmbedContainer {
+        height: auto; 
+    }
+}

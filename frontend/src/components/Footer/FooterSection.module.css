@@ -1,0 +1,160 @@
+/* --- Global Colors --- */
+:root {
+    --text-dark: #1a2a4b;   /* Main background color */
+    --text-medium: #8899b5; /* Light text for dark background */
+    --white: #ffffff;
+    --accent-blue: #8CA9FF; 
+}
+
+.footerSection {
+    padding: 10px 20px 10px;
+    /* Use the dark color for the footer background for contrast */
+    background-color: var(--text-dark); 
+    color: #ffffff;
+    color: var(--white);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-top: 5px solid var(--accent-blue); /* Subtle accent line */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Top Section --- */
+
+.footerTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.companyName {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 5px;
+}
+
+.tagline {
+    font-size: 0.95rem;
+    color: var(--text-medium);
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0 0 30px;
+}
+
+/* --- Main Grid Layout --- */
+.footerGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footerColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.columnTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-blue); /* Use accent color for headings */
+    margin-bottom: 15px;
+}
+
+.footerLink {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    line-height: 2; /* Spacing for readability */
+    transition: color 0.3s;
+}
+
+.footerLink:hover {
+    color: var(--white);
+}
+
+/* --- Contact Info Styles --- */
+
+.contactItem {
+    display: flex;
+    align-items: center;
+    /* color: var(--text-medium); */
+    color: var(--white);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.contactIcon {
+    color: var(--white);
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+/* --- Social Icons --- */
+
+.socialIcons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.socialLink {
+    color: var(--white);
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.socialLink:hover {
+    color: var(--accent-blue);
+}
+
+/* --- Bottom Bar --- */
+
+.copyrightBar {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyrightBar p {
+    font-size: 0.85rem;
+    color: var(--white);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .footerGrid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+    }
+    .footerTop {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    .footerTop .companyName {
+        margin-bottom: 15px;
+    }
+    /* Push Contact/Social column to the right, or bottom-right */
+    .footerGrid > div:nth-child(3) { 
+        grid-column: span 2; 
+    }
+}
+
+@media (max-width: 500px) {
+    .footerGrid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 30px;
+    }
+    /* Reset contact column to single span */
+    .footerGrid > div:nth-child(3) { 
+        grid-column: span 1; 
+    }
+}

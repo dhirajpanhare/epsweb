@@ -1,0 +1,234 @@
+/* --- Global Colors --- */
+:root {
+  --text-dark: #1a2a4b;
+  --text-medium: #555555;
+  --bg-light: #f7f9fc;
+  --white: #ffffff;
+  --accent-blue: #8CA9FF; 
+  --shadow-subtle: rgba(0, 0, 0, 0.08);
+  --border-color: #e0e0e0;
+}
+
+/* --- Modal Base and Overlay --- */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Darkened backdrop */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* High z-index to sit above everything */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* The actual modal content wrapper */
+.modalContent {
+    background-color: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px var(--shadow-subtle);
+    width: 90%;
+    max-width: 1100px;
+    height: 85vh; /* Fixed height for two-panel scroll */
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Layout similar to the reference image */
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+/* State when modal is open (handled by JSX, but kept for transition reference) */
+/* .modalOverlay[style*="opacity: 1"] {
+    opacity: 1;
+    visibility: visible;
+}
+.modalOverlay[style*="opacity: 1"] .modalContent {
+    transform: scale(1);
+} */
+
+/* --- Close Button --- */
+.closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-dark);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 2001;
+    transition: color 0.2s;
+}
+.closeButton:hover {
+    color: var(--accent-blue);
+}
+
+/* --- Left Panel (Header Section) --- */
+.leftPanel {
+    padding: 60px 40px;
+    background-color: var(--bg-light); 
+    position: relative;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent-blue);
+    padding: 6px 12px;
+    background-color: rgba(140, 169, 255, 0.15); /* Lightest accent blue background */
+    border-radius: 9999px;
+    margin-bottom: 20px;
+}
+
+.tagIcon {
+    width: 14px;
+    height: 14px;
+}
+
+.mainTitle {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: var(--accent-blue);
+}
+
+.subtext {
+    font-size: 1rem;
+    color: var(--text-medium);
+    line-height: 1.6;
+}
+
+/* Adjust close button for left panel placement on larger screens */
+.leftPanel .closeButton {
+    /* If we want the close button only in the top right corner of the entire modal,
+       we should disable this and rely on the one above. For now, removing the inner close button.
+       Let's keep the single one in the top right of the modal for simplicity. 
+    */
+    display: none; 
+}
+
+
+/* --- Right Panel (Accordion Items) --- */
+.rightPanel {
+    padding: 40px 30px;
+    overflow-y: auto; /* Enable vertical scroll for the questions */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* --- Accordion Item Styling --- */
+.accordionItem {
+    border-radius: 8px;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.questionHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.questionText {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    flex-grow: 1;
+    line-height: 1.4;
+}
+
+/* Icon (Plus/Minus) Wrapper */
+.iconWrapper {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent-blue);
+    opacity: 0.15;
+    transition: opacity 0.2s;
+    margin-left: 15px;
+}
+
+/* Icon (Plus/Minus) Color */
+.icon {
+    color: var(--accent-blue);
+    width: 20px;
+    height: 20px;
+}
+
+.questionHeader:hover .iconWrapper {
+    opacity: 0.25;
+}
+
+
+/* Answer Content */
+.answerContent {
+    padding: 0 20px 20px;
+    background-color: var(--white);
+}
+
+.answerContent p {
+    font-size: 0.95rem;
+    color: var(--text-medium);
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .modalContent {
+        grid-template-columns: 1fr; /* Single column layout on smaller screens */
+        height: 90vh;
+        max-width: 600px;
+        overflow-y: auto;
+    }
+    
+    .leftPanel {
+        padding: 40px 30px;
+    }
+
+    .mainTitle {
+        font-size: 2.5rem;
+    }
+
+    .rightPanel {
+        padding: 30px;
+        overflow-y: visible; /* Content can push the modal height */
+    }
+
+    /* Move close button for better visibility on mobile */
+    .closeButton {
+        top: 15px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .mainTitle {
+        font-size: 2rem;
+    }
+}

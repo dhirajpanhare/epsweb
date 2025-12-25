@@ -1,0 +1,703 @@
+/* --- Global Colors --- */
+:root {
+    --text-dark: #1a2a4b;       /* Primary text / Dark background */
+    --text-medium: #555555;     /* Subtext */
+    --white: #ffffff;
+    --accent-blue: #8CA9FF;     /* Primary brand color */
+    --bg-light: #f7f9fc;        /* Light section background */
+    --shadow-subtle: rgba(0, 0, 0, 0.1);
+}
+
+.adminDashboard {
+    /* padding: 40px 20px; */
+    background-color: var(--bg-light);
+    min-height: 100vh;
+}
+
+/* --- Header --- */
+
+.dashboardHeader {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 15px;
+}
+
+.headerIcon {
+    color: var(--accent-blue);
+    margin-right: 10px;
+}
+
+.headerTitle {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+/* --- Grid Layout --- */
+
+.dashboardGrid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    /* Two columns for medium screens, one for mobile */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px;
+}
+
+/* --- Card Link Structure --- */
+
+.cardLink {
+    text-decoration: none;
+}
+
+/* --- Individual Dashboard Card --- */
+
+.dashboardCard {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 0 4px 15px var(--shadow-subtle);
+    height: 100%;
+    min-height: 160px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboardCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Color Theming for Cards --- */
+
+/* Primary Card (Messages) - Subtle brand contrast */
+.primary {
+    border-left: 5px solid var(--accent-blue);
+}
+.primary .cardIcon {
+    color: var(--accent-blue);
+}
+
+/* Secondary Card (Proposals/Services) - Clean and professional */
+.secondary {
+    border-left: 5px solid rgba(0, 0, 0, 0.1);
+}
+.secondary .cardIcon {
+    color: var(--text-dark);
+}
+
+/* --- Card Content --- */
+
+.iconContainer {
+    margin-bottom: 15px;
+}
+
+.cardTitle {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.actionText {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent-blue);
+    transition: color 0.3s;
+}
+
+.dashboardCard:hover .actionText {
+    text-decoration: underline;
+    color: #6c92ff; /* Slightly darker hover blue */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+    .dashboardHeader {
+        margin-bottom: 30px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .headerTitle {
+        font-size: 1.8rem;
+    }
+    .dashboardCard {
+        padding: 25px;
+    }
+}
+
+/* --- Fetch Email Button Section --- */
+.actionButtonContainer {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.fetchEmailButton {
+    background-color: var(--accent-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(140, 169, 255, 0.3);
+}
+
+.fetchEmailButton:hover:not(:disabled) {
+    background-color: #6c92ff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(140, 169, 255, 0.4);
+}
+
+.fetchEmailButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.emailStats {
+    background-color: var(--white);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--text-dark);
+    box-shadow: 0 2px 8px var(--shadow-subtle);
+}
+
+/* --- Email Preview Section --- */
+.emailPreview {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px var(--shadow-subtle);
+}
+
+.emailPreview h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.emailList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.emailItem {
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    padding: 15px;
+    border-left: 3px solid var(--accent-blue);
+    transition: all 0.3s ease;
+}
+
+.emailItem:hover {
+    background-color: #e8f0ff;
+    transform: translateX(5px);
+}
+
+.emailHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.emailHeader strong {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+.emailDate {
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-weight: 500;
+}
+
+.emailFrom {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    margin-bottom: 8px;
+}
+
+.emailText {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+    .actionButtonContainer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .fetchEmailButton {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .emailStats {
+        text-align: center;
+    }
+}
+
+
+/* --- Email Modal Styles --- */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.modalContent {
+    background-color: var(--white);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 1200px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 2px solid var(--bg-light);
+}
+
+.modalHeader h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.closeButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-medium);
+    transition: all 0.3s ease;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.closeButton:hover {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.modalBody {
+    padding: 20px 30px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* --- Email Table Styles --- */
+.tableContainer {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+.emailTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--white);
+}
+
+.emailTable thead {
+    background-color: var(--accent-blue);
+    color: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.emailTable th {
+    padding: 15px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.emailTable tbody tr {
+    border-bottom: 1px solid var(--bg-light);
+    transition: background-color 0.2s ease;
+}
+
+.emailTable tbody tr:hover {
+    background-color: #f0f4ff;
+}
+
+.emailTable td {
+    padding: 12px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.emailFromCell {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.emailSubjectCell {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.emailDateCell {
+    white-space: nowrap;
+    color: var(--text-medium);
+    font-size: 0.85rem;
+}
+
+.viewButton {
+    background-color: var(--accent-blue);
+    color: var(--white);
+    border: none;
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.viewButton:hover {
+    background-color: #6c92ff;
+    transform: translateY(-1px);
+}
+
+/* --- Pagination Styles --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.paginationButton {
+    background-color: var(--white);
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.paginationButton:hover:not(:disabled) {
+    background-color: var(--accent-blue);
+    color: var(--white);
+}
+
+.paginationButton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.pageNumbers {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.pageNumber {
+    background-color: var(--white);
+    border: 1px solid #ddd;
+    color: var(--text-dark);
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 40px;
+}
+
+.pageNumber:hover {
+    background-color: var(--bg-light);
+    border-color: var(--accent-blue);
+}
+
+.activePage {
+    background-color: var(--accent-blue) !important;
+    color: var(--white) !important;
+    border-color: var(--accent-blue) !important;
+}
+
+.paginationInfo {
+    text-align: center;
+    color: var(--text-medium);
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* --- Email Detail View --- */
+.emailDetailView {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.backButton {
+    background-color: var(--bg-light);
+    border: 1px solid #ddd;
+    color: var(--text-dark);
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.backButton:hover {
+    background-color: var(--accent-blue);
+    color: var(--white);
+    border-color: var(--accent-blue);
+}
+
+.emailDetail {
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.emailDetailHeader {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.emailDetailHeader h3 {
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.emailMeta {
+    font-size: 0.95rem;
+    color: var(--text-medium);
+    margin: 8px 0;
+}
+
+.emailMeta strong {
+    color: var(--text-dark);
+    margin-right: 5px;
+}
+
+.emailBody {
+    margin-top: 20px;
+}
+
+.emailBody h4 {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.emailHtml {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.emailText {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.attachments {
+    margin-top: 20px;
+    background-color: var(--white);
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.attachments h4 {
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.attachments ul {
+    list-style: none;
+    padding: 0;
+}
+
+.attachments li {
+    padding: 8px 0;
+    color: var(--text-medium);
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Modal Styles --- */
+@media (max-width: 768px) {
+    .modalContent {
+        max-width: 95%;
+        max-height: 95vh;
+    }
+
+    .modalHeader {
+        padding: 15px 20px;
+    }
+
+    .modalHeader h2 {
+        font-size: 1.2rem;
+    }
+
+    .modalBody {
+        padding: 15px 20px;
+    }
+
+    .emailTable th,
+    .emailTable td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+    }
+
+    .emailFromCell,
+    .emailSubjectCell {
+        max-width: 150px;
+    }
+
+    .pagination {
+        gap: 5px;
+    }
+
+    .paginationButton {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    .pageNumber {
+        padding: 6px 10px;
+        min-width: 35px;
+        font-size: 0.85rem;
+    }
+}
+
+
+/* --- Loading Spinner --- */
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    min-height: 300px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--bg-light);
+    border-top: 4px solid var(--accent-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loadingContainer p {
+    font-size: 1.1rem;
+    color: var(--text-medium);
+    font-weight: 500;
+}
+
+/* --- No Emails Message --- */
+.noEmailsMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    min-height: 300px;
+}
+
+.noEmailsMessage p {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    font-weight: 500;
+}

@@ -1,0 +1,191 @@
+/* --- Desktop (Original) Styles --- */
+
+.header {
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a img{
+  /* font-size: 1.5rem;
+  font-weight: 700; */
+  height: 40px;
+  color: #333333;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+/* Desktop Navigation Container */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Desktop Navigation List */
+.navList {
+  list-style: none;
+  display: flex; /* Horizontal on desktop */
+  margin: 0;
+  padding: 0;
+  gap: 25px;
+}
+
+.navLink {
+  /* Updated for better contrast against white header */
+  color: #1a2a4b; 
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 5px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Desktop Hover Effects */
+.navLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  /* UPDATED: Primary color from new palette */
+  background-color: #8CA9FF; 
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.navLink:hover {
+  /* UPDATED: Primary color from new palette */
+  color: #8CA9FF;
+}
+
+.navLink:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Desktop Contact Button */
+.contactButton {
+  /* UPDATED: Primary color from new palette */
+  background-color: #8CA9FF;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.contactButton:hover {
+  /* UPDATED: Darker shade of primary color */
+  background-color: #7d9ae6;
+}
+
+.contactButton:active {
+  transform: scale(0.98);
+}
+
+/* Hide mobile-specific elements on desktop */
+.menuToggle,
+.mobileContact {
+    display: none;
+}
+
+
+/* --- Mobile Responsiveness (Max-width: 768px) --- */
+
+@media (max-width: 768px) {
+  
+    /* 1. Toggle Icon */
+    .menuToggle {
+        display: block; /* Show the hamburger button */
+        background: none;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #333;
+        z-index: 1001; /* Keep it above the menu */
+    }
+
+    /* 2. Navigation Menu Collapse */
+    .nav {
+        /* Default state: hidden off-screen */
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%; /* Move off-screen to the right */
+        width: 70%; /* Takes up 70% of screen width */
+        height: 100vh;
+        /* UPDATED: Custom light gradient for mobile menu */
+        background: linear-gradient(180deg, #AAC4F5 0%, #ffffff 80%); 
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+        padding: 60px 20px 20px;
+        transition: right 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    /* State when the menu is open */
+    .navOpen {
+        right: 0; /* Slide in */
+    }
+
+    /* 3. Link List Stacking */
+    .navList {
+        flex-direction: column; /* Stack links vertically */
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    /* 4. Individual Links */
+    .navList li {
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    .navLink {
+        display: block;
+        padding: 10px 0;
+        font-size: 1.2rem; /* Larger touch targets */
+        color: #1a2a4b; /* Ensure dark text on light menu background */
+    }
+    
+    /* Remove the desktop hover underline on mobile to simplify */
+    .navLink::after {
+        content: none;
+    }
+    
+    /* 5. Contact Button Handling */
+    .desktopButton {
+        display: none; /* Hide the button next to links on mobile */
+    }
+    
+    /* Show the contact button inside the stacked menu */
+    .mobileContact {
+        display: block;
+        margin-top: 20px;
+        width: 100%;
+    }
+    
+    .mobileContact .contactButton {
+        width: 100%; /* Full width button inside the menu */
+        padding: 12px;
+        border-radius: 5px;
+    }
+}

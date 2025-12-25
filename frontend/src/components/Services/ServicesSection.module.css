@@ -1,0 +1,186 @@
+/* --- Global Settings & Colors (Unchanged) --- */
+:root {
+  --text-dark: #1a2a4b;
+  --text-medium: #555555;
+  --bg-light: #f9f9f9;
+  --white: #ffffff;
+  
+  /* Colors for Icon Circles */
+  --blue: #00bcd4;
+  --pink: #e91e63;
+  --yellow: #ffc107;
+  --green: #4caf50;
+  --purple: #9c27b0;
+  --teal: #009688;
+   --accent-blue: #8CA9FF; 
+}
+
+.servicesSection {
+  padding: 80px 20px;
+  background-color: var(--bg-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-self: center;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-medium);
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+/* --- Service Grid Layout (Unchanged) --- */
+
+.servicesGrid {
+  /* display: grid; */
+  /* grid-template-columns: repeat(6, 1fr);  */
+  display: flex;
+  gap: 20px;
+
+}
+
+/* --- Individual Service Card (Fixed Height) --- */
+
+.serviceCard {
+  background-color: var(--white);
+  padding: 5px; 
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent; /* Initial transparent border */
+  
+  /* FIXED HEIGHT: Set based on content + padding for 3-card grid */
+  height: 120px; 
+  width: 180px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  
+  /* Cleaner transition for the new hover effects */
+  transition: all 0.3s ease-in-out; 
+}
+
+/* --- NEW MODERN HOVER EFFECT --- */
+
+.serviceCard:hover {
+  /* Subtle lift effect */
+  transform: translateY(-5px); 
+  /* Brighter, more focused shadow */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); 
+  
+  /* Add a border colored by the corresponding service color */
+  border-color: var(--pink); /* Defaulting to pink for generic hover */
+}
+
+/* Specific Border Color on Hover (Dynamic based on data-color attribute) */
+.serviceCard[data-color="var(--accent-blue)"]:hover { border-color: var(--accent-blue); }
+.serviceCard[data-color="var(--accent-blue)"]:hover { border-color: var(--accent-blue); }
+.serviceCard[data-color="var(--yellow)"]:hover { border-color: var(--accent-blue); }
+.serviceCard[data-color="var(--green)"]:hover { border-color: var(--accent-blue); }
+.serviceCard[data-color="var(--purple)"]:hover { border-color: var(--accent-blue); }
+.serviceCard[data-color="var(--teal)"]:hover { border-color: var(--accent-blue); }
+
+/* --- Icon Circle Styling --- */
+
+.iconCircle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  
+  /* Transition applied to the background circle */
+  transition: all 0.3s ease-in-out;
+  
+  /* Initial state styling */
+  /* opacity: 0.12 !important;  */
+}
+
+/* --- Hover Effect on Icon --- */
+/* .serviceCard:hover .iconCircle { */
+    /* Subtle change to the background circle on hover */
+    /* opacity: 0.2 !important; */
+/* } */
+
+
+.cardContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.serviceTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 5px;
+}
+
+.serviceDescription {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  /* Ensures description takes up space but doesn't overflow the fixed height */
+  overflow: hidden; 
+  /* Added margin-bottom to separate from the link */
+  margin-bottom: 10px; 
+  line-height: 1.4;
+}
+
+.actionLink {
+  color: var(--text-dark);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+  margin-top: auto; /* Pushes the link to the bottom of the fixed card */
+}
+
+/* --- Hover Effect on Link --- */
+.serviceCard:hover .actionLink {
+    color: inherit; /* Inherit the hover border color (e.g., blue) */
+}
+
+.actionLink:hover {
+    text-decoration: underline;
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 992px) {
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .serviceCard {
+      height: 180px; /* Slightly taller for 2-card layout */
+  }
+}
+
+@media (max-width: 600px) {
+  .servicesGrid {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);  
+  }
+  .serviceCard {
+    height: 150px; /* Adjust height for single column mobile view */
+    padding: 15px;
+    text-align: center;
+  }
+}

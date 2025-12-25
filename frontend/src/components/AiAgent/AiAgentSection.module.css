@@ -1,0 +1,450 @@
+/* --- Global Colors/Variables from previous sections --- */
+:root {
+  --text-dark: #1a2a4b;
+  --text-medium: #555555;
+  --bg-light: #f7f9fc;
+  --white: #ffffff;
+  --accent-blue: #8CA9FF; 
+  --shadow-light: rgba(0, 0, 0, 0.08);
+
+  /* Specific Agent Colors */
+  --color-purple: #9c27b0;
+  --color-green: #4caf50;
+  --color-blue: #00bcd4;
+  --color-yellow: #ffc107;
+  
+  /* Chat Colors */
+  --ai-bubble: #e6e6e6;
+  --user-bubble: var(--accent-blue);
+}
+
+.agentSection {
+  padding: 80px 20px;
+  background-color: var(--bg-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-medium);
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+/* --- Layout: Two Columns (Agent Cards Left, Chat Box Right) --- */
+.agentLayout {
+  display: grid;
+  /* Cards (1fr) is first (Left), Chatbox (1.5fr) is second (Right) */
+  grid-template-columns: 1fr 1.5fr; 
+  gap: 40px;
+}
+
+/* --- LEFT: Agent Cards --- */
+.agentCardsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  order: 1; /* Ensure it's in the 1st column */
+}
+
+.agentCard {
+  background-color: var(--white);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px var(--shadow-light);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.agentCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-blue), #6c92ff);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.agentCard:hover::before {
+  transform: scaleX(1);
+}
+
+.agentCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent-blue);
+}
+
+.agentCardActive {
+  /* Style for the currently selected card */
+  border-color: var(--accent-blue) !important;
+  box-shadow: 0 0 0 3px rgba(140, 169, 255, 0.3); /* Stronger indicator */
+  background: linear-gradient(135deg, rgba(140, 169, 255, 0.05) 0%, rgba(140, 169, 255, 0.1) 100%);
+}
+
+.agentCardActive::before {
+  transform: scaleX(1);
+}
+
+.iconWrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 15px rgba(140, 169, 255, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.agentCard:hover .iconWrapper {
+  transform: scale(1.1);
+}
+
+.agentName {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.agentDescription {
+  font-size: 0.85rem;
+  color: var(--text-medium);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* --- RIGHT: Chat Box --- */
+
+.chatBoxContainer {
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  height: 500px; 
+  overflow: hidden;
+  order: 2; /* Ensure it's in the 2nd column */
+}
+
+.chatHeader {
+  background-color: var(--text-dark);
+  color: var(--white);
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.chatIcon {
+  margin-right: 10px;
+  color: var(--accent-blue);
+}
+
+.chatTitle {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.chatWindow {
+  flex-grow: 1;
+  padding: 15px; 
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column; 
+  gap: 10px;
+}
+
+/* --- Message Bubbles --- */
+.chatMessage {
+  display: flex;
+  max-width: 90%;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.messageText {
+  padding: 10px 15px;
+  border-radius: 15px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  white-space: pre-wrap; 
+}
+
+/* AI Message Styling */
+.ai {
+  align-self: flex-start;
+}
+.ai .avatar {
+  background-color: var(--accent-blue);
+  color: var(--white);
+}
+.ai .messageText {
+  background-color: var(--ai-bubble);
+  color: var(--text-dark);
+  border-top-left-radius: 5px; 
+}
+
+/* User Message Styling */
+.user {
+  align-self: flex-end; /* Pushes the message to the right */
+}
+.user .avatar {
+  background-color: var(--text-dark);
+  color: var(--white);
+  order: 2; /* Move avatar to the right */
+}
+.user .messageText {
+  background-color: var(--user-bubble);
+  color: var(--white);
+  border-top-right-radius: 5px; /* Sharp corner near avatar */
+  order: 1; 
+}
+
+
+.chatInputArea {
+  border-top: 1px solid #e0e0e0;
+  padding: 15px 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.chatInput {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: none; 
+  font-size: 1rem;
+  min-height: 60px;
+  transition: border-color 0.3s;
+}
+
+.chatInput:focus {
+  border-color: var(--accent-blue);
+  outline: none;
+}
+
+.sendButton {
+  background-color: var(--accent-blue);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  height: fit-content; 
+}
+
+.sendButton:hover {
+  background-color: #6c92ff;
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 992px) {
+  .agentLayout {
+    grid-template-columns: 1fr; /* Stack layout on tablet/mobile */
+    gap: 30px;
+  }
+  .agentCardsContainer {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    order: 1; /* Cards are back on top in the stack */
+  }
+  .chatBoxContainer {
+    height: 450px;
+    order: 2; /* Chat box is back on the bottom in the stack */
+  }
+}
+
+@media (max-width: 768px) {
+  .agentCardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .chatInput {
+    min-height: 40px;
+  }
+}
+
+/* --- Data Visualization Styles --- */
+.dataVizContainer {
+  background-color: #f9fafb;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px;
+  border: 1px solid #e0e0e0;
+}
+
+.vizTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.chartContainer {
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.simpleChart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 200px;
+  gap: 10px;
+}
+
+.chartBar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.barFill {
+  width: 100%;
+  background-color: var(--accent-blue);
+  border-radius: 4px 4px 0 0;
+  transition: all 0.3s ease;
+  min-height: 10px;
+}
+
+.barLabel {
+  font-size: 0.85rem;
+  color: var(--text-medium);
+  font-weight: 600;
+}
+
+.dataStats {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  padding: 15px;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  font-weight: 500;
+}
+
+.statValue {
+  font-size: 1.3rem;
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+/* --- File Upload Styles --- */
+.fileUploadSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: #f0f4ff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 2px dashed var(--accent-blue);
+}
+
+.fileUploadLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+  padding: 8px 15px;
+  background-color: var(--accent-blue);
+  color: var(--white);
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.fileUploadLabel:hover {
+  background-color: #6c92ff;
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileName {
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  font-weight: 500;
+  padding: 5px 10px;
+  background-color: var(--white);
+  border-radius: 4px;
+}
+
+/* --- Responsive for Data Viz --- */
+@media (max-width: 768px) {
+  .simpleChart {
+    height: 150px;
+  }
+  
+  .dataStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .fileUploadSection {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

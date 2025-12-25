@@ -1,0 +1,321 @@
+/* 🛠️ HeroSection.module.css */
+
+/* --- Custom Properties (Variables) --- */
+:root {
+  --primary-blue: #0047b3; /* A deeper, vibrant blue for the main accents */
+  --light-lavender: #AAC4F5;
+  --text-dark: #1a2a4b;
+  --text-medium: #555555;
+  --white: #ffffff;
+  --light-background-gray: #f2f2f7; /* Background color */
+}
+
+/* --- Hero Section Base Styles --- */
+
+.hero {
+  position: relative;
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; 
+  min-height: 85vh; 
+  padding: 10px 20px 0; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-medium);
+  text-align: center;
+  /* Updated background color */
+  background: var(--light-background-gray);
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative; 
+  z-index: 2; /* Ensure content is above patterns */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Content and Typography --- */
+
+.featureTag {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-blue);
+  letter-spacing: 0.5px;
+  margin-bottom: 25px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: rgba(140, 169, 255, 0.2);
+  margin-top: 10px;
+}
+
+.content {
+  max-width: 950px; 
+  margin-bottom: 0px; 
+}
+
+.headline {
+  font-size: 3.5rem; 
+  font-weight: 800;
+  line-height: 1.1; 
+  margin-bottom: 20px;
+  letter-spacing: -1.5px;
+  color: var(--text-dark); 
+}
+
+.subheadline {
+  font-size: 1.1rem; 
+  font-weight: 400; 
+  line-height: 1.6;
+  margin-bottom: 30px;
+  max-width: 650px; 
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--text-medium);
+}
+
+/* --- CTA Buttons --- */
+.ctaGroup {
+  display: flex;
+  justify-content: center;
+  gap: 20px; 
+  margin-bottom: 50px;
+}
+
+.primaryCta,
+.secondaryCta {
+  padding: 14px 30px;
+  border-radius: 8px; 
+  font-size: 1rem; 
+  font-weight: 600; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.primaryCta {
+  background-color: var(--light-lavender);
+  /* color: white; */
+  color: var(--text-dark);
+  border: none;
+}
+
+.primaryCta:hover {
+  background-color: #7d9ae6; 
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(140, 169, 255, 0.4);
+}
+
+.secondaryCta {
+  background-color: var(--white);
+  color: var(--text-dark); 
+  border: 1px solid var(--text-dark);
+  box-shadow: none;
+}
+
+.secondaryCta:hover {
+  background-color: #f0f4ff; 
+  transform: translateY(-2px);
+}
+
+/* --- Metrics/Data Bar --- */
+
+.metricsBar {
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 30px 40px;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.metricItem {
+  text-align: center;
+  flex: 1;
+}
+
+.metricValue {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 5px;
+}
+
+.metricLabel {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-medium);
+  line-height: 1.3;
+}
+
+/* ------------------------------------------------ */
+/* --- REVISED BACKGROUND PATTERN STYLES (MATCHING IMAGE) --- */
+/* ------------------------------------------------ */
+
+/* 1. Diagonal Stripes (Emulate the center background) */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  /* Creates thin, subtle diagonal lines */
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.03), /* Very light gray/black */
+      rgba(0, 0, 0, 0.03) 1px,
+      transparent 1px,
+      transparent 10px /* Controls the line spacing */
+    );
+  background-size: 100% 100%;
+}
+
+/* 2. Top-Left Blue Geometric Accent */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50vw; 
+  height: 50vh; 
+  z-index: 1;
+  background-image: linear-gradient(
+    135deg, 
+    var(--primary-blue) 0%, 
+    var(--light-lavender) 30%, 
+    transparent 70%
+  );
+  /* The skew helps create the angular cut-out effect */
+  transform: skewY(-20deg) translateX(-20%) translateY(-20%);
+  transform-origin: top left;
+  opacity: 1;
+}
+
+/* 3. Bottom-Right Blue Geometric Accent */
+.container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50vw;
+  height: 50vh;
+  z-index: 1;
+  background-image: linear-gradient(
+    -45deg, 
+    var(--primary-blue) 0%, 
+    var(--light-lavender) 30%, 
+    transparent 70%
+  );
+  transform: skewY(-20deg) translateX(20%) translateY(20%);
+  transform-origin: bottom right;
+  opacity: 1;
+}
+
+/* 4. Dotted Pattern (Top Right) */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 250px;
+  height: 250px;
+  z-index: 1;
+  /* Creates the dots/grid pattern */
+  background-image: 
+    radial-gradient(circle at center, rgba(0, 71, 179, 0.2) 2px, transparent 2px), /* Blue dots */
+    radial-gradient(circle at center, rgba(170, 196, 245, 0.3) 1px, transparent 1px); /* Lighter dots */
+  background-size: 20px 20px;
+  opacity: 0.8;
+  transform: rotate(0deg); 
+  border-radius: 0; 
+  box-shadow: none;
+}
+
+
+/* ------------------------------------------------ */
+/* --- RESPONSIVE ADJUSTMENTS --- */
+/* ------------------------------------------------ */
+
+@media (max-width: 992px) {
+  .headline { font-size: 3rem; }
+  .metricsBar { max-width: 100%; padding: 20px; }
+}
+
+@media (max-width: 768px) {
+  .hero { min-height: 70vh; padding: 50px 15px 0; }
+  .headline { font-size: 2.5rem; letter-spacing: -1px; }
+  .subheadline { font-size: 1rem; max-width: 90%; }
+  
+  .metricsBar {
+    flex-direction: column; 
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+    padding: 25px;
+  }
+  .metricItem {
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+  }
+  .metricItem:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .metricValue { font-size: 1.8rem; }
+
+  /* Pattern simplification for mobile */
+  .hero::after,
+  .container::after {
+    opacity: 0.6;
+    width: 70vw;
+    height: 70vh;
+  }
+  .container::before {
+    opacity: 0.5;
+    background-size: 15px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .headline { font-size: 2rem; line-height: 1.2; text-align:center }
+  .ctaGroup { flex-direction: column; gap: 10px; }
+  .primaryCta, .secondaryCta { width: 100%; max-width: 300px; margin: 0 auto; }
+  
+  /* Further pattern simplification for small screens */
+  .hero::after,
+  .container::after {
+    opacity: 0.4;
+    width: 80vw;
+    height: 80vh;
+  }
+  .container::before {
+    opacity: 0.3;
+    background-size: 10px 10px;
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* You may need to adjust the z-index of your elements if the pseudo-elements obscure the content */
+.container {
+  z-index: 10;
+}
+.hero::before,
+.hero::after,
+.container::before,
+.container::after {
+  z-index: 1;
+}

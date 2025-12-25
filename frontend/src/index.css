@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+body{
+    scroll-behavior: smooth;
+}
+body, html {
+  overflow-x: hidden;
+}
